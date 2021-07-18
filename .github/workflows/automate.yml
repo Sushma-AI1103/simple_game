@@ -15,8 +15,7 @@ jobs:
     steps:
       -uses: actions/checkout@master  
       -name: install sfml 
-       run:  |
-             sudo apt-get update 
+       run:  sudo apt-get update
              sudo apt-get install libsfml-dev
       -name: Build code 
        run : g++ -o game game.cpp -lsfml-window -lsfml-system -lsfml-graphics
