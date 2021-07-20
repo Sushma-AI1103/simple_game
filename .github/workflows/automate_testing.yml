@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  Build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      -uses: actions/checkout@v2
+      -name: Install sfml
+       run:  |
+         sudo apt update
+         sudo apt-get install libsfml-dev
+      -name: List files
+       run : ls
+      -name: Build
+       run: g++ -o game game.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+       
+       
+        
