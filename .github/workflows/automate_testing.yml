@@ -1,25 +1,14 @@
-name: CI
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
+name: learn-github-actions
+on: [push]
 jobs:
-  Build:
-
+  build-and-runs:
+    name: Build and Run
     runs-on: ubuntu-latest
-
     steps:
-      -uses: actions/checkout@v2
-      -name: Install sfml
-       run:  |
+      - uses: actions/checkout@v1
+      - name: Install sfml
+        run:  |
         sudo apt update
-        sudo apt-get install libsfml-dev
-      -name: List files
-       run: ls
-      -name: Build
-       run: g++ -o game game.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-
-       
-        
+        sudo apt-get install libsfml-dev 
+      - name: Build
+        run: g++ -o game game.cpp -lsfml-window -lsfml-graphics -lsfml-system -lsfml-audio
